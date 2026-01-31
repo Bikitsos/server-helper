@@ -16,6 +16,8 @@ use ratatui::{
     widgets::{Block, Borders, List, ListItem, ListState, Paragraph, Wrap},
 };
 
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+
 #[derive(Clone, PartialEq)]
 enum InstallItem {
     Winget,
@@ -803,7 +805,7 @@ fn ui(f: &mut Frame, app: &mut App) {
         .split(f.area());
 
     // Title
-    let title = Paragraph::new(" Server Helper - Winget Installer ")
+    let title = Paragraph::new(format!(" Server Helper v{} ", VERSION))
         .style(Style::default().fg(Color::Cyan).add_modifier(Modifier::BOLD))
         .alignment(Alignment::Center)
         .block(Block::default().borders(Borders::ALL));
